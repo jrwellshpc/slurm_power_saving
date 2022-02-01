@@ -15,7 +15,7 @@ Wake-On-Lan Steps:
 3. Create a file, /etc/ethers, which has all of your MAC addresses and what node they tie to. If you have multiple networks, you only need the mac addresses for the network you are going to use to carry wake-on-lan packets.
 
 IPMI Steps:
-1. 
+1. Setup your IPMI/BMC hardware for access on the network you need the traffic to run over.
 
 Final Steps:
 1. Find a place to put your suspend, node_shutdown, resume, and node_startup scripts. Mine are in /opt/system/slurm/etc. Please note how I am using eth-tool to ensure the g bit is set on the network adapter before shutdown, so that wake-on-lan works. 
