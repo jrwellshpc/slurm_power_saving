@@ -15,16 +15,16 @@ Wake-On-Lan Steps:
 3. Create a file, /etc/ethers, which has all of your MAC addresses and what node they tie to. If you have multiple networks, you only need the mac addresses for the network you are going to use to carry wake-on-lan packets.
 
 IPMI Steps:
+1. 
 
-
-All Steps:
-4. Find a place to put your suspend, node_shutdown, resume, and node_startup scripts. Mine are in /opt/system/slurm/etc. Please note how I am using eth-tool to ensure the g bit is set on the network adapter before shutdown, so that wake-on-lan works. 
-5. Edit slurm.conf. Be sure to change your SuspendProgram and ResumeProgram locations to where you put your scripts.
-6. Run "scontrol reconfigure" to make the changes permanent.
-7. Wait. Remember. Wait.
-8. See if your idle nodes become idle~ in sinfo.
-9. Run a job on those to bring them back.
-10. See if they return to idle~ when they are idle once more.
+Final Steps:
+1. Find a place to put your suspend, node_shutdown, resume, and node_startup scripts. Mine are in /opt/system/slurm/etc. Please note how I am using eth-tool to ensure the g bit is set on the network adapter before shutdown, so that wake-on-lan works. 
+2. Edit slurm.conf. Be sure to change your SuspendProgram and ResumeProgram locations to where you put your scripts.
+3. Run "scontrol reconfigure" to make the changes permanent.
+4. Wait. Remember. Wait.
+5. See if your idle nodes become idle~ in sinfo.
+6. Run a job on those to bring them back.
+7. See if they return to idle~ when they are idle once more.
 
 It may be useful to remember the sinfo codes:  
 \*  The node is presently not responding and will not be allocated any new work. If the node remains non-responsive, it will be placed in the DOWN state (except in the case of COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).  
