@@ -1,0 +1,6 @@
+# Ethers converts nodenames to mac addresses for wake on lan requests.
+00:e0:4c:6d:81:73	compute-0
+00:e0:4c:6d:80:b8	compute-1
+00:e0:4c:6d:81:92	compute-2
+00:e0:4c:6d:80:e1	compute-3
+
