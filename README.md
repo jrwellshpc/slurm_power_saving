@@ -3,7 +3,7 @@
 
 The files in this repository will give you examples of what is need to get SLURM's Power Saving feature working.
 
-The number one piece of advice that I received was wait. Everything in here is on a timer and you need to wait 10 minutes or whatever for those timers to timeout. Wait. You will not get this done in a day. Wait.
+The number one piece of advice that I received was to increase the timeouts to 10 minutes and wait. Everything in here is on a timer and you need to wait 10 minutes or whatever for those timers to timeout. Wait. You will not get this done in a day. Wait.
 
 Also, I owe a huge thank you to Brian Haymore at the University of Utah for his help in getting all of this working.
 
