@@ -29,7 +29,7 @@ Final Steps:
 
 It may be useful to remember the sinfo codes:  
 \*  The node is presently not responding and will not be allocated any new work. If the node remains non-responsive, it will be placed in the DOWN state (except in the case of COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).  
-\~  The node is presently in powered off.  
+\~  The node is presently powered off.  
 \#  The node is presently being powered up or configured.  
 \!  The node is pending power down.  
 \%  The node is presently being powered down.  
