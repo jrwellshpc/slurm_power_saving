@@ -20,7 +20,7 @@ IPMI Steps:
 Final Steps:
 1. Find a place to put your suspend, node_shutdown, resume, and node_startup scripts. They need to be available on every node. Mine are in /opt/system/slurm/etc. Please note how I am using eth-tool to ensure the g bit is set on the network adapter before shutdown, so that wake-on-lan works. 
 2. Ensure those .sh files are executable. Github seems to mess this up.
-3. Edit slurm.conf. Be sure to change your SuspendProgram and ResumeProgram locations to where you put your scripts.
+3. Edit slurm.conf. Be sure to change your SuspendProgram and ResumeProgram locations to where you put your scripts. You'll also want to set the suspendable nodes into a STATE=CLOUD. <-- VERY IMPORTANT.
 4. Run "scontrol reconfigure" to make the changes permanent.
 5. Wait. Remember. Wait.
 6. See if your idle nodes become idle~ in sinfo.
