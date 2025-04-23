@@ -18,14 +18,15 @@ IPMI Steps:
 1. Setup your IPMI/BMC hardware for access on the network you need the traffic to run over.
 
 Final Steps:
-1. Find a place to put your suspend, node_shutdown, resume, and node_startup scripts. They need to be available on every node. Mine are in /opt/system/slurm/etc. Please note how I am using eth-tool to ensure the g bit is set on the network adapter before shutdown, so that wake-on-lan works. 
+1. Find a place to put your slurm_suspend.sh, node_suspend.sh, slurm_resume, and node_resume scripts. They need to be available on every node. Mine are in /opt/system/slurm/etc. Please note how I am using eth-tool to ensure the g bit is set on the network adapter before shutdown, so that wake-on-lan works if you can't use IPMI.
 2. Ensure those .sh files are executable. Github seems to mess this up.
-3. Edit slurm.conf. Be sure to change your SuspendProgram and ResumeProgram locations to where you put your scripts. You'll also want to set the suspendable nodes into a STATE=CLOUD. <-- VERY IMPORTANT.
+3. Edit slurm.conf with what I have in etc/slurm/slurm.conf. Be sure to change your SuspendProgram and ResumeProgram locations to where you put your scripts. You'll also want to set the suspendable nodes into a STATE=CLOUD. <-- VERY IMPORTANT. Then Save.
 4. Run "scontrol reconfigure" to make the changes permanent.
 5. Wait. Remember. Wait.
 6. See if your idle nodes become idle~ in sinfo.
 7. Run a job on those to bring them back.
 8. See if they return to idle~ when they are idle once more.
+9. You will likely need to ssh into 'down~' nodes and run 'systemctl restart slurmd'. If you see these you may want to extend the timeouts set it slurm.conf. Some nodes take 7 minutes to come back, FYI.
 
 It may be useful to remember the sinfo codes:  
 \*  The node is presently not responding and will not be allocated any new work. If the node remains non-responsive, it will be placed in the DOWN state (except in the case of COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).  
@@ -37,8 +38,3 @@ It may be useful to remember the sinfo codes:
 \@  The node is pending reboot.  
 \^  The node reboot was issued.  
 \-  The node is planned by the backfill scheduler for a higher priority job.  
-
-To Do:
-1. Test on SUSE
-2. Test IPMI
-3. ?
