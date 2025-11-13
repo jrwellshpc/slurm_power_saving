@@ -27,13 +27,14 @@ Final Steps:
 7. Run a job on those to bring them back.
 8. See if they return to idle~ when they are idle once more.
 9. You will likely need to ssh into 'down~' nodes and run 'systemctl restart slurmd'. If you see these you may want to extend the timeouts set it slurm.conf. Some nodes take 7 minutes to come back, FYI.
+10. Once you have things working, set the SuspendTime to something like an hour (3600) and setup the cron_script.sh to be executed from a server like the slurm master server. You will have to do your own logic, but I've included code to parse sinfo for ~ and then surface those nodes in a for statement so they can be booted. We need this for daily configuration updates (new packages are installed, updated, etc.).
 
 It may be useful to remember the sinfo codes:  
 \*  The node is presently not responding and will not be allocated any new work. If the node remains non-responsive, it will be placed in the DOWN state (except in the case of COMPLETING, DRAINED, DRAINING, FAIL, FAILING nodes).  
-\~  The node is presently powered off.  
+\~  The node is presently suspended.  
 \#  The node is presently being powered up or configured.  
-\!  The node is pending power down.  
-\%  The node is presently being powered down.  
+\!  The node is pending suspension.  
+\%  The node is presently being suspended.  
 \$  The node is currently in a reservation with a flag value of "maintenance".  
 \@  The node is pending reboot.  
 \^  The node reboot was issued.  
