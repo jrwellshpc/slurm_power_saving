@@ -1,0 +1,16 @@
+[Unit]
+Description=Force all CPUs to userspace governor at 800MHz
+After=multi-user.target
+ConditionPathExists=/usr/bin/cpupower
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Ensure the userspace governor module is available (harmless if already loaded)
+ExecStartPre=/usr/sbin/modprobe cpufreq_userspace
+# Set governor first, then frequency for all cores
+ExecStart=/usr/bin/cpupower -c all frequency-set -g userspace
+ExecStart=/usr/bin/cpupower -c all frequency-set -f 800MHz
+
+[Install]
+WantedBy=multi-user.target
