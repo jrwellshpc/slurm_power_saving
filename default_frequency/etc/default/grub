@@ -1,0 +1,3 @@
+# Grub stuff
+GRUB_CMDLINE_LINUX="yourNormalStatementGoesHere intel_pstate=disable"
+# More Grub Stuff
