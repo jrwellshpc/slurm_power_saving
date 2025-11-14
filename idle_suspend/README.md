@@ -1,4 +1,4 @@
-# SLURM Power Saving
+# SLURM Power Saving: Idle Suspend
 ## Example Scripts
 
 The files in this repository will give you examples of what is need to get SLURM's Power Saving feature working.
